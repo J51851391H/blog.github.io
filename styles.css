@@ -1,0 +1,117 @@
+
+
+/* GENERAL */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #f9f3ec;  /* #fff Same background color for the entire page */
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  text-align: left;
+}
+
+h1, h2 {
+  color: #333;
+  margin-top: 0;  /* Remove default margin */
+  margin-bottom:0;    
+}
+
+h2 {
+	text-transform: lowercase;
+	font-variant: small-caps;
+	color: #484848;
+}
+
+h3 {
+  margin-bottom: 5px;
+}
+
+strong {
+    font-variant: small-caps;
+    color: #484848;
+}
+
+a {
+  text-decoration: none;  /* Remove underline */
+  color: black;  /* Plain black text */
+}
+
+a:hover {
+  text-decoration: underline;  /* Add underline on hover */
+}
+
+p {
+  color: #black;
+  text-align: left;
+  line-height: 1.5;
+}
+
+ul {
+    padding-left: 0;
+    list-style-position: inside;
+}
+
+ul li {
+    text-indent: -1em; 
+    padding-left: 1em;
+    line-height: 1.5;
+}
+
+footer {
+  margin-top: 20px;
+}
+
+.container {
+  margin: auto;
+  padding-top: 20px;  /* Padding at the top of the container */
+  text-align: left;
+  background-color: #f9f3ec;
+  width: 100%;
+  max-width: 490px;
+}
+
+.top-line {
+  border: 0;
+  border-top: 2px solid #333; /* Styling for the horizontal line */
+  margin-bottom: 20px;  /* Space between line and title */
+}
+
+.gray-line {
+  border: 0; 
+  height: 1.5px; 
+  background: #ccc;  /* Gray color */
+}
+
+/* LEGAL DISCLAIMER AT BOTTOM OF PAGE */
+
+  #disclaimer {
+    color: #909090;
+    font-size: 0.8em;
+    margin-top: 50px;
+  }
+ 
+/* INDEX HOMEPAGE ONLY */
+
+.index {
+	line-height: 1.5;
+}
+
+#lastUpdated {
+  margin-top: -15px; /* Adjust this value as needed */
+}
+
+
+/* Footer Styling */
+footer {
+  width: 100%;
+  max-width: 490px; /* same as your container to maintain the structure */
+  margin: auto; /* centers the footer */
+  padding: 20px 0; /* adds padding above and below the footer content */
+  text-align: center; /* centers the footer text */
+  font-size: 0.8em; /* smaller font size for footer, adjust as needed */
+  color: #333; /* change color as per your design */
+}
+
+
+
