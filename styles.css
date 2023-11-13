@@ -63,12 +63,21 @@ footer {
 }
 
 .container {
-  margin: auto;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
   padding-top: 20px;  /* Padding at the top of the container */
   text-align: left;
   background-color: #f9f3ec;
-  width: 100%;
-  max-width: 490px;
+  /* width: 100%; */
+  /* max-width: 490px; */
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 95%; /* Increase the width for smaller screens */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
 }
 
 .top-line {
@@ -105,7 +114,7 @@ footer {
 /* Footer Styling */
 footer {
   width: 100%;
-  max-width: 490px; /* same as your container to maintain the structure */
+  max-width: 500px; /* same as your container to maintain the structure */
   margin: auto; /* centers the footer */
   padding: 20px 0; /* adds padding above and below the footer content */
   text-align: center; /* centers the footer text */
