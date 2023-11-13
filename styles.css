@@ -82,6 +82,13 @@ footer {
     }
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+
+
 .top-line {
   border: 0;
   border-top: 2px solid #333; /* Styling for the horizontal line */
