@@ -78,7 +78,7 @@ footer {
 @media screen and (max-width: 600px) {
     .container {
         width: 95%; /* Increase the width for smaller screens */
-        padding: 10px; /* Adjust padding for smaller screens */
+        padding: 20px; /* Adjust padding for smaller screens */
     }
 }
 
