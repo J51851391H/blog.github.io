@@ -87,8 +87,6 @@ footer {
 }
 
 
-
-
 .top-line {
   border: 0;
   border-top: 2px solid #333; /* Styling for the horizontal line */
@@ -122,14 +120,16 @@ footer {
 
 /* Footer Styling */
 footer {
-  width: 100%;
-  max-width: 500px; /* same as your container to maintain the structure */
-  margin: auto; /* centers the footer */
-  padding: 20px 0; /* adds padding above and below the footer content */
-  text-align: center; /* centers the footer text */
-  font-size: 0.8em; /* smaller font size for footer, adjust as needed */
-  color: #333; /* change color as per your design */
+  width: calc(100% - 40px); /* Adjust width to account for horizontal padding */
+  max-width: 500px; /* Same as your container to maintain the structure */
+  margin: auto; /* Centers the footer */
+  padding: 20px 10px; /* Adds padding above, below, and on the sides */
+  text-align: center; /* Centers the footer text */
+  font-size: 0.8em; /* Smaller font size for footer, adjust as needed */
+  color: #333; /* Change color as per your design */
+  box-sizing: border-box; /* Include padding and border in the width */
 }
+
 
 
 
