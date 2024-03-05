@@ -89,6 +89,8 @@ document.getElementById("joke").onclick = function() {
   }
 };
 
+// tic-tac-toe game
+
 let gameBoard;
 let playerTurn = true;
 let gameCount = 0;
@@ -96,44 +98,67 @@ let gameCount = 0;
 function initGame() {
   gameBoard = Array(9).fill(null);
   document.getElementById('gameBoard').innerHTML = '';
-  gameBoard.forEach((_, idx) => {
+  for (let idx = 0; idx < gameBoard.length; idx++) {
     const cell = document.createElement('div');
     cell.id = `cell-${idx}`;
     cell.className = 'cell';
     cell.addEventListener('click', () => playerMove(idx));
     document.getElementById('gameBoard').appendChild(cell);
-  });
+  }
   document.getElementById('gameStatus').innerText = 'Game on!';
   document.getElementById('replayBtn').style.display = 'none';
   playerTurn = true; // Reset player turn to true for the new game
+  gameCount = gameCount < 3 ? gameCount : 0; // Reset game count if >= 3
 }
 
 function playerMove(idx) {
-  if (!gameBoard[idx] && playerTurn) {
+  if (gameBoard[idx] === null && playerTurn) {
     makeMove(idx, 'X');
+    playerTurn = false; // Change turn
     if (!checkWin()) {
-      playerTurn = false;
       setTimeout(computerMove, 500);
     }
   }
 }
 
 function computerMove() {
-  const emptyCells = gameBoard.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
-  if (emptyCells.length > 0) {
-    const move = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-    makeMove(move, 'O');
+  // Prevent computer's move if the game has already been won
+  if (!gameBoard.includes(null) || !checkWin()) {
+    let move = findBestMove('O'); // Computer tries to win
+    if (move === null) {
+      move = findBestMove('X'); // Block player from winning
+      if (move === null) {
+        // Random move if no immediate win or block opportunity
+        const emptyCells = gameBoard.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
+        move = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+      }
+    }
+    if (move !== null) makeMove(move, 'O');
+    playerTurn = true; // Give the turn back to the player
     checkWin();
-    playerTurn = true;
   }
 }
 
 function makeMove(idx, player) {
   gameBoard[idx] = player;
   document.getElementById(`cell-${idx}`).innerText = player;
+  checkWin(); // Check win after every move
 }
 
-function checkWin() {
+function findBestMove(player) {
+  for (let i = 0; i < gameBoard.length; i++) {
+    let boardCopy = [...gameBoard];
+    if (boardCopy[i] === null) {
+      boardCopy[i] = player;
+      if (checkWin(boardCopy, player)) {
+        return i;
+      }
+    }
+  }
+  return null;
+}
+
+function checkWin(board = gameBoard, player = '') {
   const winConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -142,21 +167,22 @@ function checkWin() {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ];
 
-  for (let condition of winConditions) {
+  for (const condition of winConditions) {
     const [a, b, c] = condition;
-    if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
-      endGame(gameBoard[a]);
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+      endGame(board[a]);
       return true;
     }
   }
 
-  if (!gameBoard.includes(null)) {
+  if (!board.includes(null)) {
     endGame('Draw');
     return true;
   }
+
   return false;
 }
 
@@ -168,6 +194,8 @@ function endGame(winner) {
   if (gameCount >= 3) {
     document.getElementById('replayBtn').innerText = 'Thanks for playing';
     document.getElementById('replayBtn').disabled = true;
+  } else {
+    document.getElementById('replayBtn').innerText = 'Play Again';
   }
   playerTurn = false; // Prevent further moves
 }
@@ -175,6 +203,10 @@ function endGame(winner) {
 document.getElementById('replayBtn').addEventListener('click', initGame);
 
 initGame(); // Initialize the game when the page loads
+
+
+
+
 
 </script>
 
